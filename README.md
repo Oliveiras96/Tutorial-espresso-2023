@@ -14,6 +14,10 @@ Com a geometria da estrutura devidamente otimizada, podemos iniciar o procedimen
 
 (mostrar como visualizar a estrutura do material utilizando o xcrysden ou outro software parecido).
 
+```
+calculation = 'scf'
+```
+
 ### Procedimento
 
 #### SCF
