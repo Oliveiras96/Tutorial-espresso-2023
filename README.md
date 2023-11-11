@@ -57,6 +57,9 @@ Com a geometria da estrutura devidamente otimizada, podemos iniciar o procedimen
 
 (mostrar como visualizar a estrutura do material utilizando o xcrysden ou outro software parecido).
 
+### Como verificar a estrutura do modelo
+Xcrysden: http://www.xcrysden.org/
+
 ### Procedimento
 
 #### SCF
