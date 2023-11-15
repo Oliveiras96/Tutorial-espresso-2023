@@ -10,15 +10,12 @@
   outdir        = './out'
   wf_collect    = .true.
   disk_io       = 'default'
-  pseudo_dir    = '../pseudos/'
+  pseudo_dir    = '../../pseudos/'
   tstress       = .true.
 /
 &SYSTEM
-  ibrav         = 12,
-  a             = 2.4674,
-  b             = 2.4674,
-  c             = 20.000,
-  cosab         = -0.500000,
+  ibrav         = 0,
+  celldm(1)     = 4.64872627,
   nat           = 2,
   ntyp          = 1,
   ecutwfc       = 40.0 ,
@@ -36,9 +33,16 @@
 /
 ATOMIC_SPECIES
   C    12.011 C.pbe-n-kjpaw_psl.1.0.0.UPF
-ATOMIC_POSITIONS angstrom
-C   0.000000000   0.000000000   5.000000000
-C   0.000000000   1.424500000   5.000000000
+
 K_POINTS automatic
 48 48 1 0 0 0
+
+CELL_PARAMETERS alat
+   1.002303819  -0.000000000   0.000000000
+  -0.501151909   0.868020569   0.000000000
+   0.000000000   0.000000000   8.130081301
+
+ATOMIC_POSITIONS (crystal)
+C             0.0000000000        0.0000000000        0.2500000000
+C             0.3333333330        0.6666666670        0.2500000000
 

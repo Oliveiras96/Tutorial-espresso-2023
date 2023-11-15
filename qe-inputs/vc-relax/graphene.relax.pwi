@@ -42,7 +42,7 @@
 &CELL
    press_conv_thr  = 0.5D0
    press           = 0.D0
-   cell_dynamics   = bfgs,
+   cell_dynamics   = 'bfgs',
    cell_dofree     = '2Dxy'
    cell_factor     = 1.5D0
 /
