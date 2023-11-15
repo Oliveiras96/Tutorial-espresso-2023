@@ -1,5 +1,5 @@
 &CONTROL
-  calculation   = 'vc-relax'
+  calculation   = 'scf'
   title         = 'graphene'
   prefix        = 'graphene'
   verbosity     = 'high'
@@ -8,16 +8,15 @@
   iprint        = 1
   tprnfor       = .true.
   outdir        = './out'
+  wf_collect    = .true.
   disk_io       = 'default'
   pseudo_dir    = '../pseudos/'
   tstress       = .true.
-  forc_conv_thr = 1.0d-4
-  etot_conv_thr = 1.0d-5
 /
 &SYSTEM
   ibrav         = 12,
-  a             = 2.460,
-  b             = 2.460,
+  a             = 2.4674,
+  b             = 2.4674,
   c             = 20.000,
   cosab         = -0.500000,
   nat           = 2,
@@ -30,27 +29,16 @@
   smearing      = 'marzari-vanderbilt' ,
 /
 &ELECTRONS
-  electron_maxstep = 100,
-  conv_thr         = 1.0d-10 ,
-  mixing_mode      = 'plain' ,
-  mixing_beta      = 0.3d0 ,
-/
-&IONS
-  ion_dynamics     = 'bfgs'
-  upscale          = 20.0
-/
-&CELL
-   press_conv_thr  = 0.5D0
-   press           = 0.D0
-   cell_dynamics   = bfgs,
-   cell_dofree     = '2Dxy'
-   cell_factor     = 1.5D0
+  electron_maxstep  = 100,
+  conv_thr          = 1.0d-10 ,
+  mixing_mode       = 'plain' ,
+  mixing_beta       = 0.3d0 ,
 /
 ATOMIC_SPECIES
   C    12.011 C.pbe-n-kjpaw_psl.1.0.0.UPF
-ATOMIC_POSITIONS crystal
-C      0.000000000    0.000000000    0.250000000
-C      0.333333333    0.666666667    0.250000000
+ATOMIC_POSITIONS angstrom
+C   0.000000000   0.000000000   5.000000000
+C   0.000000000   1.424500000   5.000000000
 K_POINTS automatic
-12 12 1 0 0 0
+48 48 1 0 0 0
 
