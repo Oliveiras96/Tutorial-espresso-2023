@@ -21,16 +21,13 @@ Pontos importantes no input do espresso:
     etot_conv_thr=1.0d-5
 /
 &SYSTEM
-    ibrav = 12,
+    ibrav = 4,
     a = 2.4674,
-    b = 2.4674,
     c= 20.000,
-    cosab=-0.500000,
     nat = 2,
     ntyp = 1,
-    ecutwfc = 40.0 ,
-    ecutrho = 400.0 ,
-    input_DFT = 'PBE' ,
+    ecutwfc = 50.0 ,
+    ecutrho = 400.0,
 /
 &ELECTRONS
     conv_thr = 1.0d-10 ,
@@ -72,16 +69,13 @@ Nesta etapa, será calculada a densidade eletrônica do sistema.
     pseudo_dir='../pseudos/'
 /
 &SYSTEM
-    ibrav = 12,
+    ibrav = 4,
     a = 2.4674,
-    b = 2.4674,
     c= 20.000,
-    cosab=-0.500000,
     nat = 2,
     ntyp = 1,
-    ecutwfc = 40.0 ,
-    ecutrho = 400.0 ,
-    input_DFT = 'PBE' ,
+    ecutwfc = 50.0 ,
+    ecutrho = 400.0,
 /
 &ELECTRONS
     electron_maxstep = 100,
