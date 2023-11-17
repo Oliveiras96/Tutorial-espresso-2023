@@ -1,8 +1,10 @@
 import numpy as np
+import pandas as pd
 import matplotlib as mpl
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gs
+import os
 
 mpl.rcParams['xtick.labelsize'] = 15
 mpl.rcParams['ytick.labelsize'] = 15
@@ -50,3 +52,60 @@ def bndplot(bandsfile,fermi,subplot,ylims, symmetry_points, symmetry_labels):
   subplot.set_ylim([axis[2],axis[3]])
   subplot.set_xlim([axis[0],axis[1]])
   subplot.set_ylim([ylims[0],ylims[1]])
+
+def prowfc_to_dataframe(filename, cols):
+  df = pd.read_table(filepath_or_buffer=filename,
+                     engine="python",
+                     sep="\s+",
+                     names=cols,
+                     skiprows=1)
+
+  return df
+
+
+filebands = "../electronic-structure/BANDS/graphene.gnu"
+Fermi = float(os.popen("grep Fermi ../electronic-structure/NSCF/graphene.nscf.pwo").read().split()[4])
+# Fermi = 0.6438
+
+sym_points = [0.0000, 0.6667, 1.2440, 1.5774]
+sym_labels = ['K', r'$\Gamma$', 'M', 'K']
+
+fig, axs = plt.subplots(1,2, sharey=True, figsize=[16,9],gridspec_kw={'width_ratios': [16, 8]})
+
+bndplot(bandsfile=filebands,
+        fermi=Fermi,
+        subplot=axs[0],
+        symmetry_labels=sym_labels,
+        symmetry_points=sym_points, 
+        ylims=[-6,6])
+
+ratio = .3
+# x_left, x_right = axs[1].get_xlim()
+# y_low, y_high = axs[1].get_ylim()
+# axs[1].set_aspect(abs((x_right-x_left)/(y_low-y_high))*ratio)
+
+filename = "../electronic-structure/pDOS/graphene.pdos_tot"
+cols = ["E (eV)","dos(E)","pdos(E)"]
+
+pdos = prowfc_to_dataframe(filename, cols)
+
+print(pdos.head(3))
+
+axs[1].plot(pdos["dos(E)"].to_numpy(),
+            pdos["E (eV)"].to_numpy()-Fermi,
+            color='k',
+            lw=1.25)
+
+axs[1].axhline(0, 0, 1, color='r', ls='--', lw=1.5)
+axs[1].set_xlim([0,8])
+axs[1].set_xlabel("states/eV")
+
+axs[1].fill_betweenx(pdos["E (eV)"].to_numpy()-Fermi,
+                0,
+                pdos["dos(E)"].to_numpy(),
+                where=(pdos["E (eV)"].to_numpy()-Fermi < 0),
+                facecolor='b',
+                alpha=0.35)
+
+plt.savefig("graphene-bands-dos.png", dpi=300)
+plt.show()
