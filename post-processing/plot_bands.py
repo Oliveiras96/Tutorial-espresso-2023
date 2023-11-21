@@ -36,7 +36,7 @@ def bndplot(bandsfile,fermi,subplot,ylims, symmetry_points, symmetry_labels):
       bands[j][i][0] = x[i]
       bands[j][i][1] = sel[j][1] - fermi #rescale the energy axis to E - Ef
   for i in bands: #Here we plots the bands
-    subplot.plot(i[:,0],i[:,1],color="black", alpha=0.75, linewidth=1.25)
+    subplot.plot(i[:,0],i[:,1],color="black", alpha=0.75, linewidth=1.5)
 
   # Plot the high simmetry points:
   if (len(symmetry_points) > 0):
@@ -63,8 +63,8 @@ def prowfc_to_dataframe(filename, cols):
   return df
 
 
-filebands = "../electronic-structure/BANDS/graphene.gnu"
-Fermi = float(os.popen("grep Fermi ../electronic-structure/NSCF/graphene.nscf.pwo").read().split()[4])
+filebands = "../electronic-structure-new/BANDS/graphene.gnu"
+Fermi = float(os.popen("grep Fermi ../electronic-structure-new/NSCF/graphene.nscf.pwo").read().split()[4])
 # Fermi = 0.6438
 
 sym_points = [0.0000, 0.6667, 1.2440, 1.5774]
@@ -77,14 +77,14 @@ bndplot(bandsfile=filebands,
         subplot=axs[0],
         symmetry_labels=sym_labels,
         symmetry_points=sym_points, 
-        ylims=[-6,6])
+        ylims=[-15,15])
 
 ratio = .3
 # x_left, x_right = axs[1].get_xlim()
 # y_low, y_high = axs[1].get_ylim()
 # axs[1].set_aspect(abs((x_right-x_left)/(y_low-y_high))*ratio)
 
-filename = "../electronic-structure/pDOS/graphene.pdos_tot"
+filename = "../electronic-structure-new/DOS/graphene.pdos_tot"
 cols = ["E (eV)","dos(E)","pdos(E)"]
 
 pdos = prowfc_to_dataframe(filename, cols)

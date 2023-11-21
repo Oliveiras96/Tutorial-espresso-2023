@@ -1,0 +1,41 @@
+&CONTROL
+  calculation   = 'scf'
+  title         = 'graphene'
+  prefix        = 'graphene'
+  verbosity     = 'high'
+  restart_mode  = 'from_scratch'
+  iprint        = 1
+  tprnfor       = .true.
+  outdir        = './out'
+  wf_collect    = .true.
+  disk_io       = 'default'
+  pseudo_dir    = '/home/caique.campos/Tutorial-espresso-2023/Graphene/pseudos/'
+  tstress       = .true.
+/
+&SYSTEM
+    ibrav = 4,
+    a = 2.4674,
+    c= 20.000,
+    nat = 2,
+    ntyp = 1,
+    ecutwfc = 50.0 ,
+    ecutrho = 400.0,
+    occupations = 'smearing'
+    degauss     = 0.0001
+/
+&ELECTRONS
+  electron_maxstep  = 100,
+  conv_thr          = 1.0d-10 ,
+  mixing_mode       = 'plain' ,
+  mixing_beta       = 0.3d0 ,
+/
+ATOMIC_SPECIES
+  C    12.011 C.pbe-n-kjpaw_psl.1.0.0.UPF
+
+K_POINTS automatic
+48 48 1 0 0 0
+
+ATOMIC_POSITIONS (crystal)
+C             0.0000000000        0.0000000000        0.2500000000
+C             0.3333333330        0.6666666670        0.2500000000
+

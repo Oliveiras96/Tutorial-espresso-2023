@@ -1,0 +1,10 @@
+&PROJWFC
+   prefix  = 'graphene'
+   outdir  = '../SCF/out/'
+   emin    = -25
+   emax    = 15.0
+   degauss = 0.001
+   DeltaE  = 0.1
+   filpdos = 'graphene'
+/
+
