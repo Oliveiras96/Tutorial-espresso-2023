@@ -84,7 +84,7 @@ ratio = .3
 # y_low, y_high = axs[1].get_ylim()
 # axs[1].set_aspect(abs((x_right-x_left)/(y_low-y_high))*ratio)
 
-filename = "../electronic-structure-new/DOS/graphene.pdos_tot"
+filename = "../electronic-structure-new/DOS-new/graphene.pdos_tot"
 cols = ["E (eV)","dos(E)","pdos(E)"]
 
 pdos = prowfc_to_dataframe(filename, cols)
@@ -97,7 +97,7 @@ axs[1].plot(pdos["dos(E)"].to_numpy(),
             lw=1.25)
 
 axs[1].axhline(0, 0, 1, color='r', ls='--', lw=1.5)
-axs[1].set_xlim([0,8])
+axs[1].set_xlim([0,4])
 axs[1].set_xlabel("states/eV")
 
 axs[1].fill_betweenx(pdos["E (eV)"].to_numpy()-Fermi,
@@ -107,5 +107,5 @@ axs[1].fill_betweenx(pdos["E (eV)"].to_numpy()-Fermi,
                 facecolor='b',
                 alpha=0.35)
 
-plt.savefig("graphene-bands-dos.png", dpi=300)
+# plt.savefig("graphene-bands-dos.png", dpi=300)
 plt.show()
