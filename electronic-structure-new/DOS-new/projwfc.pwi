@@ -3,7 +3,8 @@
    outdir  = '../SCF/out/'
    emin    = -25
    emax    = 15.0
-   DeltaE  = 0.125
+   degauss = 0.01
+   DeltaE  = 0.1
    filpdos = 'graphene'
 /
 
