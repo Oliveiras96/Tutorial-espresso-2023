@@ -41,14 +41,14 @@ def bndplot(bandsfile,fermi,subplot,ylims, symmetry_points, symmetry_labels):
   # Plot the high simmetry points:
   if (len(symmetry_points) > 0):
     for i, j in zip(symmetry_points, symmetry_labels):
-      subplot.axvline(i, ymin=0, ymax=1.0, color='k', ls='--', lw=1.0)
-      subplot.text(i-0.02, ylims[0]-0.75, j, fontsize=15)
+      subplot.axvline(i, ymin=0, ymax=1.0, color='k', ls='--', lw=1.25)
+      subplot.text(i-0.02, ylims[0]-1.5, j, fontsize=20)
 
   #plot Fermi energy:
   fermi_plot = 0 # since the y axis was already rescaled, Fermi level is at 0 eV
   subplot.plot([min(x),max(x)],[fermi_plot,fermi_plot], '--',color='red', linewidth=1.5)
   subplot.set_xticklabels([])
-  subplot.set_ylabel(r'E - $E_{F}$', fontsize=15)
+  subplot.set_ylabel(r'E - $E_{F}$', fontsize=20)
   subplot.set_ylim([axis[2],axis[3]])
   subplot.set_xlim([axis[0],axis[1]])
   subplot.set_ylim([ylims[0],ylims[1]])
@@ -98,7 +98,7 @@ axs[1].plot(pdos["dos(E)"].to_numpy(),
 
 axs[1].axhline(0, 0, 1, color='r', ls='--', lw=1.5)
 axs[1].set_xlim([0,4])
-axs[1].set_xlabel("states/eV")
+axs[1].set_xlabel("states/eV", fontsize=20)
 
 axs[1].fill_betweenx(pdos["E (eV)"].to_numpy()-Fermi,
                 0,
@@ -107,5 +107,5 @@ axs[1].fill_betweenx(pdos["E (eV)"].to_numpy()-Fermi,
                 facecolor='b',
                 alpha=0.35)
 
-# plt.savefig("graphene-bands-dos.png", dpi=300)
+plt.savefig("graphene-bands-dos.png", dpi=300)
 plt.show()
