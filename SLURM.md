@@ -19,19 +19,19 @@ O acesso ao cluster pode ser feito por meio do protocolo ssh. O usuário que pos
 ssh <login-usuario>@hpc.ufabc.edu.br
 ```
 
-![Login HPC](./Figuras-tutorial-slurm/login-hpc.png Screenshot terminal login HPC)
+![Login HPC](./Figuras-tutorial-slurm/login-hpc.png "Screenshot terminal login HPC")
 
 Logado no gate HPC, o usuário pode prosseguir para o login no cluster carbono:
 ```bash
 ssh <login-usuario>@carbono.ufabc.int.br
 ```
-![Login Carbono](./Figuras-tutorial-slurm/login-carbono.png Screenshot terminal login Carbono)
+![Login Carbono](./Figuras-tutorial-slurm/login-carbono.png "Screenshot terminal login Carbono")
 
 Agora, o usuário se encontra em sua área de trabalho no cluster. Aqui, ele pode gerenciar seus arquivos e diretórios bem como visualizar os softwares disponíveis no cluster, filas e jobs em execução:
 
-![Modulos](./Figuras-tutorial-slurm/module-avail.png Modulos disponíveis)
+![Modulos](./Figuras-tutorial-slurm/module-avail.png "Modulos disponíveis")
 
-![Filas](./Figuras-tutorial-slurm/filas.png Filas disponíveis)
+![Filas](./Figuras-tutorial-slurm/filas.png "Filas disponíveis")
 
 ### O SLURM:
 

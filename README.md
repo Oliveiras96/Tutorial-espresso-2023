@@ -6,7 +6,7 @@ Tutorial pratico de como utilizar o Quantum Espresso para rodar cálculos de est
 
 Para calcular a estrutura eletrônica de um cristal, é preciso se certificar de que a estrutura está bem otimizada, ou seja, precisamos garantir que a estrutura esteja com a simetria e os parâmetros de rede corretos. Isso pode ser garantido conduzindo cálculos de otimização de geometria como o **relax** e o **vc-relax**. 
 
-O tipo de cálculo a ser realizado pelo QE é controlado pela flag `calculation` no card **&CONTROL**. Os principais tipos de cálculos são: **scf**, **nscf**, **bands**, **relax** e **vc-relax**. Mais detalhes podem ser encontrados na (documentação do **pwscf**)[https://www.quantum-espresso.org/Doc/INPUT_PW.html]
+O tipo de cálculo a ser realizado pelo QE é controlado pela flag `calculation` no card **&CONTROL**. Os principais tipos de cálculos são: **scf**, **nscf**, **bands**, **relax** e **vc-relax**. Mais detalhes podem ser encontrados na [Documentação do pwscf](https://www.quantum-espresso.org/Doc/INPUT_PW.html).
 
 Abaixo estão sumarizados algumas característica de cálculos de otimização estrutural:
 
@@ -100,7 +100,7 @@ Cálculo SCF -> Cálculo NSCF -> Cálculo de Bandas -> Cálculo da DOS -> Pós-p
 
 **1. Cálculo SCF:**
 
-Nesta etapa, será calculada a densidade eletrônica da estrutura otimizada. Um detalhe importante é que em cálculos de estrutura eletrônica, o número de pontos k utilizada é, em geral, maior do que o utilizado para cálculos de otimização estrutural. Uma boa referência que discute esse tópico pode ser encontrada (aqui)[https://www.sciencedirect.com/science/article/pii/S277294942200002X]. Neste exemplo, usaremos um grid de (48x48x1) pontos-k.
+Nesta etapa, será calculada a densidade eletrônica da estrutura otimizada. Um detalhe importante é que em cálculos de estrutura eletrônica, o número de pontos k utilizada é, em geral, maior do que o utilizado para cálculos de otimização estrutural. Uma boa referência que discute esse tópico pode ser encontrada [aqui](https://www.sciencedirect.com/science/article/pii/S277294942200002X). Neste exemplo, usaremos um grid de (48x48x1) pontos-k.
 
 ```
 &CONTROL
@@ -145,7 +145,7 @@ C             0.3333333330        0.6666666670        0.2500000000
 
 **2. Cálculo NSCF:**
 
-Nesta etapa, será feito um cálculo sob potencial constante (calculado na etapa anterior). Aqui, a flag **calculation** deve ser setada para `nscf`. Outro ponto importante é que nesta etapa deve ser especificado o número de bandas a ser calculado (por meio da flag `nbnd` no card **$SYSTEM**) de acordo com o tipo de sistema (ver documentação do QE)[https://www.quantum-espresso.org/Doc/INPUT_PW.html]. É importante que nesta etapa, o grid de pontos-k utilizado seja mais denso que na etapa de anterior, aqui usaremos um grid de (96x96x1). Para cálculos de densidade de estados (DOS), é aconselhável definir as ocupações para o método `tetrahedra`, por meio da flag `occupations` o card **&SYSTEM**.
+Nesta etapa, será feito um cálculo sob potencial constante (calculado na etapa anterior). Aqui, a flag **calculation** deve ser setada para `nscf`. Outro ponto importante é que nesta etapa deve ser especificado o número de bandas a ser calculado (por meio da flag `nbnd` no card **$SYSTEM**) de acordo com o tipo de sistema [ver documentação do QE](https://www.quantum-espresso.org/Doc/INPUT_PW.html). É importante que nesta etapa, o grid de pontos-k utilizado seja mais denso que na etapa de anterior, aqui usaremos um grid de (96x96x1). Para cálculos de densidade de estados (DOS), é aconselhável definir as ocupações para o método `tetrahedra`, por meio da flag `occupations` o card **&SYSTEM**.
 
 **Importante**: o prefixo utilizado (flag **prefix**) e a flag **outdir** devem ser as mesmas que na etapa anterior. Também, as posições atômicas utilizadas são as da etapa anterior.
 
@@ -230,7 +230,7 @@ C             0.0000000000        0.0000000000        0.2500000000
 C             0.3333333330        0.6666666670        0.2500000000
 ```
 
-Uma ferramenta útil para encontrar as coordenadas desses pontos é o k-path selector do software (Xcrysden)[http://www.xcrysden.org/] e também o (SeeK-Path)[https://www.materialscloud.org/work/tools/seekpath] da materials cloud.
+Uma ferramenta útil para encontrar as coordenadas desses pontos é o k-path selector do software [Xcrysden](http://www.xcrysden.org/) e também o [SeeK-Path](https://www.materialscloud.org/work/tools/seekpath) da materials cloud.
 
 **4. Densidade de Estados (DOS):**
 
