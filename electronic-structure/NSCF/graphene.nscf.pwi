@@ -9,7 +9,7 @@
   outdir        = '../SCF/out'
   wf_collect    = .true.
   disk_io       = 'default'
-  pseudo_dir    = '../../pseudos/'
+  pseudo_dir    = '/home/caique.campos/Tutorial-espresso-2023/Graphene/pseudos/'
   tstress       = .true.
 /
 &SYSTEM

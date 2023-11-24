@@ -1,5 +1,5 @@
 &bands
-       outdir        = './out'
+       outdir        = '../SCF/out'
        prefix        = 'graphene'
        filband       = 'graphene'
 /

@@ -285,3 +285,6 @@ pdos = prowfc_to_dataframe(pdos_filename, cols)
 ```
 
 ![Diagrama de bandas e densidade de estados](./post-processing/graphene-bands-dos.png "Diagrama de bandas e Densidade de estados")
+
+
+Parte 2: [Usando o cluster carbono](./SLURM.md)
