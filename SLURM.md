@@ -1,12 +1,10 @@
-# Workshop Quantum Espresso no cluster Carbono (**Em desenvolvimento**)
-
-## Tutorial 2: Utilizando o cluster carbono:
+## Parte 2: Utilizando o Cluster Carbono para Realização das Simulações
 
 As simulações de cálculos de primeiros princípios com o Quantum Espresso demandam muitos recursos computacionais (poder de processamento, memória, etc). Para melhorar a eficiência das simulações, a maioria dos softwares que implementam métodos computacionais para cálculos de estrutura eletrônica o fazem de forma a explorar computação paralela. Embora os cálculos apresentados nesse tutorial possam ser rodados em um laptop pessoal, cotidianamente as simulações são realizadas em computadores de alta performance: workstations e supercomputadores (clusters).
 
-A UFABC atualmente conta com dois computadores de alto desempenho: os clusteres **titânio** e o mais novo cluster **carbono**. Mais informações sobre esses equipamentos (e.g. especificação de hardware) pode ser enontrado em [https://ccm.propes.ufabc.edu.br/equipamentos/](ccm.propes.ufabc.edu.br/equipamentos).
+A UFABC atualmente conta com dois computadores de alto desempenho: os clusteres **titânio** e o mais novo cluster **carbono**. Mais informações sobre esses equipamentos (e.g. especificação de hardware) podem ser enontradas em [https://ccm.propes.ufabc.edu.br/equipamentos/](ccm.propes.ufabc.edu.br/equipamentos).
 
-Neste mini tutorial serão demonstrados como acessar e utilizar o cluster carbono para realização de cálculos de estrutura eletrônica com o software Quantum Espresso. Este tutorial é uma continuação direta do tutorial [1: Estrutura Eletrônica do Grafeno](./README.md)
+Neste mini tutorial serão demonstrados como acessar e utilizar o cluster carbono para realização de cálculos de estrutura eletrônica com o software Quantum Espresso. Este tutorial é uma continuação direta do tutorial [Estrutura Eletrônica do Grafeno](./ESPRESSO.md)
 
 Este tutorial assume que os leitores estão utilizando uma distribuição linux (e.g. ubuntu) e portanto todas as instruções serão dadas via terminal de comando. A razão é que ambos os clusteres da UFABC utilizam uma distribuição linux como sistema operacional. 
 
@@ -14,7 +12,7 @@ Este tutorial assume que os leitores estão utilizando uma distribuição linux 
 
 ### Acessando o cluster carbono:
 
-O acesso ao cluster pode ser feito por meio do protocolo ssh. O usuário que possui vpn pode acessar diretamente os clusteres. Caso contrário, deve-se logar no gate (hpc.ufabc):
+O acesso ao cluster pode ser feito por meio do protocolo ssh. O usuário que possui vpn pode acessar diretamente os clusteres. Caso contrário, deve-se logar no gate (hpc.ufabc.edu.br):
 ```bash
 ssh <login-usuario>@hpc.ufabc.edu.br
 ```
@@ -45,14 +43,14 @@ Na prática, para submeter um job o usuário pode utilizar um arquivo `bash` com
 
 Abaixo, um exemplo de script com o cabeçalho contendo as instruções para o SLURM:
 ```bash
-#!/bin/bash              <---"Shebang": especifica qual interpretador utilizar (nesse caso: bash shell)
-#SBATCH --job-name=t-cpu <--- Nome do job que aparecerá na fila
-#SBATCH --nodes=1        <--- Nós requisitados
+#!/bin/bash                  <---"Shebang": especifica qual interpretador utilizar (nesse caso: bash shell)
+#SBATCH --job-name=t-cpu     <--- Nome do job que aparecerá na fila
+#SBATCH --nodes=1            <--- Nós requisitados
 #SBATCH --ntasks-per-node=16 <--- Número de tarefas executadas em um nó
 #SBATCH --ntasks=16          <--- Controla o número máximo de tarefas que serão executadas utilizando os recursos alocados
 #SBATCH --mem=64gb           <--- Memória total solicitada para realização do job 
-#SBATCH --time=24:00:00    <--- Tempo máximo de execução do job (deve respeitar os limites da fila!!!)
-#SBATCH -p normal            <--- Fila onde o job será executado
+#SBATCH --time=24:00:00      <--- Tempo máximo de execução do job (deve respeitar os limites da fila!!!)
+#SBATCH -p grafeno           <--- Fila onde o job será executado
 
 # Carregar todos os módulos necessários para a realização do job (softwares, bibliotecas, etc):
 module load openmpi/4.1.5-gcc-12.2.0-ptk6i3e
@@ -62,7 +60,7 @@ module load quantum-espresso/7.2-gcc-12.2.0-ohadjws
 # usando como entrada o arquivo espresso.pwi e escrevendo a saida no arquivo espresso.pwo:
 mpirun -np 16 pw.x -npool 1 -ndiag 1 -inp espresso.pwi >> espresso.pwo
 ```
-O script acima pode ser utilizado como template para rodar jobs mais elaborados, como por exemplo executar uma sequencia de operações (ou simulações) em loop. As instruções do job são feitas usando `bash`. A documentação completa do SLURM incluindo mais opções de personalização e descrição de todas as flags está disponível em: [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html).
+O script acima pode ser utilizado como template para rodar jobs mais elaborados, como por exemplo executar uma sequência de operações (ou simulações) em loop. As instruções do job são feitas usando `bash`. A documentação completa do SLURM incluindo mais opções de personalização e descrição de todas as flags está disponível em: [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html).
 
 
 ### Utilizando o Quantum Espresso na Carbono:
@@ -120,7 +118,7 @@ O arquivo do pseudopotencial `C.pbe-n-kjpaw_psl.1.0.0.UPF` pode ser obtido no li
 ```
 
 
-As versões do espresso disponíveis no cluster podem ser consultadas com o comando `mudule avail. Atualmente, a Carbono conta com as seguintes compilações do espresso:
+As versões do espresso disponíveis no cluster podem ser consultadas com o comando `mudule avail`. Atualmente, a Carbono conta com as seguintes compilações do espresso:
 
 - Quantum Espresso 7.2 (CPU);
 - Quantum Espresso 7.2 cuda (GPU);
@@ -140,16 +138,16 @@ O exemplo de script para o SLURM para rodar o cálculo de SCF para o grafeno é 
 #!/bin/bash
 #SBATCH --job-name=scf
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=32
-#SBATCH --ntasks=32
-#SBATCH -p normal
+#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks=16
+#SBATCH -p grafeno
 
 module load openmpi/4.1.5-gcc-12.2.0-ptk6i3e
 module load quantum-espresso/7.2-gcc-12.2.0-ohadjws
 
 export OMP_NUM_THREADS=1
 
-mpirun -np 32 pw.x -npool 1 -ndiag 4 -inp graphene.scf.pwi >> graphene.scf.pwo
+mpirun -np 16 pw.x -inp graphene.scf.pwi >> graphene.scf.pwo
 ```
 
 **2. Rodando o Quantum Espresso na GPU:**
@@ -182,3 +180,6 @@ export OMP_NUM_THREADS=1
 mpirun pw.x -npool 1 -ndiag 1 -inp graphene.scf.pwi >> graphene.scf.pwo
 ```
 Comparar a saída do cálculo usando CPU vs GPU;
+
+**[Voltar para o início](./README.md)**
+**Parte 2: [Usando o cluster carbono](./SLURM.md)**
