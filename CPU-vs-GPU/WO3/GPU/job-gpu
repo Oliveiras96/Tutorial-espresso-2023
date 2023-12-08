@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=t-gpu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=2
+#SBATCH --gres=gpu:2
+#SBATCH -p metano
+
+module purge
+
+module load openmpi/4.1.5-gcc-12.2.0-ptk6i3e
+module load cuda/12.2-gcc-12.2.0-cexgeyz
+module load quantum-espresso/7.2-cuda
+
+export OMP_NUM_THREADS=1
+
+mpirun pw.x -npool 1 -ndiag 1 -inp espresso.pwi >> espresso.pwo
+
