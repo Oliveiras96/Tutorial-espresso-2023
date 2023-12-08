@@ -62,10 +62,10 @@ def prowfc_to_dataframe(filename, cols):
 ##############################################################################################
 
 # Arquivo de saida do pos-processamento de bandas:
-filebands = "../electronic-structure-new/BANDS/graphene.gnu"
+filebands = "../electronic-structure/BANDS/graphene.gnu"
 
 # Pegar a energia de Fermi diretamente 
-Fermi = float(os.popen("grep Fermi ../electronic-structure-new/NSCF/graphene.nscf.pwo").read().split()[4])
+Fermi = float(os.popen("grep Fermi ../electronic-structure/NSCF/graphene.nscf.pwo").read().split()[4])
 
 # Pontos de simetria:
 sym_points = [0.0000, 0.6667, 1.2440, 1.5774]
@@ -82,7 +82,7 @@ bndplot(bandsfile=filebands,
         ylims=[-15,15])
 
 # Arquivo com a densidade de estados:
-pdos_filename = "../electronic-structure-new/DOS-new/graphene.pdos_tot"
+pdos_filename = "../electronic-structure/DOS/graphene.pdos_tot"
 cols = ["E (eV)","dos(E)","pdos(E)"]
 
 pdos = prowfc_to_dataframe(pdos_filename, cols)
