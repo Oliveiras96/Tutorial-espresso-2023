@@ -1,5 +1,0 @@
-&bands
-       outdir        = '../SCF/out'
-       prefix        = 'graphene'
-       filband       = 'graphene'
-/
