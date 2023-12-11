@@ -280,7 +280,12 @@ Fermi = float(os.popen("grep Fermi ../electronic-structure-new/NSCF/graphene.nsc
 pdos = prowfc_to_dataframe(pdos_filename, cols)
 ```
 
+**Resultado**:
 ![Diagrama de bandas e densidade de estados](./post-processing/graphene-bands-dos.png "Diagrama de bandas e Densidade de estados")
+
+**Referência**:
+![Diagrama de bandas e densidade de estados](./Figuras-tutorial-slurm/graphene-bands-dos-ref.png "Diagrama de bandas e densidade de estados - referência")
+**Referência: [Graphene book](https://www.researchgate.net/publication/261027774_Graphene_Book_Additional_material_Jan2014)**
 
 **[Voltar para o início](./README.md)**
 **Parte 2: [Usando o cluster carbono](./SLURM.md)**
