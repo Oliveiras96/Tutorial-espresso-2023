@@ -58,7 +58,7 @@ module load quantum-espresso/7.2-gcc-12.2.0-ohadjws
 
 # Instruções para rodar o software quantum espresso, utilizando 16 cores em paralelo 
 # usando como entrada o arquivo espresso.pwi e escrevendo a saida no arquivo espresso.pwo:
-mpirun -np 16 pw.x -npool 1 -ndiag 1 -inp espresso.pwi >> espresso.pwo
+mpirun -np 16 pw.x -inp espresso.pwi >> espresso.pwo
 ```
 O script acima pode ser utilizado como template para rodar jobs mais elaborados, como por exemplo executar uma sequência de operações (ou simulações) em loop. As instruções do job são feitas usando `bash`. A documentação completa do SLURM incluindo mais opções de personalização e descrição de todas as flags está disponível em: [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html).
 
@@ -177,7 +177,7 @@ module load quantum-espresso/7.2-cuda
 
 export OMP_NUM_THREADS=1
 
-mpirun pw.x -npool 1 -ndiag 1 -inp graphene.scf.pwi >> graphene.scf.pwo
+mpirun pw.x -inp graphene.scf.pwi >> graphene.scf.pwo
 ```
 Comparar a saída do cálculo usando CPU vs GPU;
 
