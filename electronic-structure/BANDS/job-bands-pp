@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=bands
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks=16
+#SBATCH -p grafeno
+
+module load openmpi/4.1.5-gcc-12.2.0-ptk6i3e
+module load quantum-espresso/7.2-gcc-12.2.0-ohadjws
+
+export OMP_NUM_THREADS=1
+
+mpirun -np 16 bands.x -inp graphene.bands-pp.pwi >> graphene.bands-pp.pwo

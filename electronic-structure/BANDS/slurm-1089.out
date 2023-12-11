@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+The following dependent module(s) are not currently loaded: hwloc/2.7.0 (required by: openmpi4/4.1.4)
+-------------------------------------------------------------------------------
+
+The following have been reloaded with a version change:
+  1) hwloc/2.7.0 => hwloc/2.9.1-gcc-12.2.0-nwoauvw
+
+-------------------------------------------------------------------------------
+The following dependent module(s) are not currently loaded: hwloc/2.7.0 (required by: openmpi4/4.1.4)
+-------------------------------------------------------------------------------
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL
+Note: The following floating-point exceptions are signalling: IEEE_DENORMAL

@@ -82,7 +82,7 @@ bndplot(bandsfile=filebands,
         ylims=[-15,15])
 
 # Arquivo com a densidade de estados:
-pdos_filename = "../electronic-structure/DOS/graphene.pdos_tot"
+pdos_filename = "../electronic-structure/pDOS/graphene.pdos_tot"
 cols = ["E (eV)","dos(E)","pdos(E)"]
 
 pdos = prowfc_to_dataframe(pdos_filename, cols)
