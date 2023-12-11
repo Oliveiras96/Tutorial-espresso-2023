@@ -5,3 +5,16 @@ Este tutorial é parte do workshop ministrado pelo [Grupo de Estrutura Eletrôni
 **[Parte 1: Cálculos de Otimização Estrutural e Estrutura Eletrônica com o Quantum Espresso](./ESPRESSO.md)**
 
 **[Parte 2: Utilizando o Cluster Carbono para Realização das Simulações](./SLURM.md)**
+
+
+### Contato:
+
+**Email**: 
+
+caique.campos@aluno.ufabc.edu.br
+lanna.emilli@ufabc.edu.br
+ipaves.bruno@ufabc.edu.br
+
+**Site do GEEDAI**: [https://geedai.pesquisa.ufabc.edu.br/](https://geedai.pesquisa.ufabc.edu.br/)
+
+**Site da CCM**: [https://geedai.pesquisa.ufabc.edu.br/](https://geedai.pesquisa.ufabc.edu.br/)
